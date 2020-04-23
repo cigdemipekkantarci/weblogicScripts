@@ -17,20 +17,20 @@ def serverStatus(blacklist):
         serverName = server.getName()
         if serverState == "RUNNING":
                 startTime = getActivationTime(serverName)
-                print serverName + '\t' + serverState + '\tStart Time\t:' + startTime
+                print serverName + '\t:\033[1;32m' + serverState +  '\033[0m' + '\tStart Time\t:' + startTime
         elif serverState == "STARTING":
-                print serverName + '\t' + serverState 
+                print serverName + '\t:\033[1;33m' + serverState + '\033[0m'
         elif serverState == "UNKNOWN":
-                print serverName + '\t' + serverState 
+                print serverName + '\t:\033[1;34m' + serverState + '\033[0m'
         elif serverState == "SHUTDOWN" or "FAILED_NOT_RESTARTABLE":
-                print serverName + '\t' + serverState 
+                print serverName + '\t:\033[1;31m' + serverState + '\033[0m'
                 startManagedSrv(serverName,blacklist)
                 serverState = server.getState()
                 if serverState == "RUNNING":
                     startTime = getActivationTime(serverName)
-                    print serverName + '\t' + serverState +  '\tStart Time\t:' + startTime 
+                    print serverName + '\t:\033[1;32m' + serverState +  '\033[0m' + '\tStart Time\t:' + startTime 
         else:
-                print serverName + '\t' + serverState 
+                print serverName + '\t:\033[1;31m' + serverState + '\033[0m'
     print "--------------------------------------------------------------------"
 
 def startManagedSrv(serverName,blacklist):
