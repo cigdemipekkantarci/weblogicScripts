@@ -61,3 +61,6 @@ except Exception,e:
 
 blacklist = ['AdminServer']
 serverStatus(blacklist)
+
+disconnect()
+exit()
