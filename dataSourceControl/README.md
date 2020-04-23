@@ -31,7 +31,7 @@ This scipt is used to show the status and current configuration of data sources.
 - Admin server must be running prior to using this script. 
 - *connect()* function should be adjusted according to the environment.
 
-The script connects to server runtime gets the information about the data source: Name, State, Active Connections Current Count, Type, Max Connections Count, Min Connections Count, Connection Url, Source File. 
+The script connects to server runtime gets the information about the data source: Name, State, Active Connections Current Count, Type, Max Connections Count, Min Connections Count, Connection Url, Source File. Also tests the connection because automatically testing take place each 2 mins, unless being configured differently.
 
 **Note:** For security related reasons you may want to remove the function that returns the Connection Url.
                                                                                                               
