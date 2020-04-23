@@ -85,8 +85,8 @@ An example usage is as follows:
 
 Create a path for related files, send serverStateControl.sh, serverStateControl.py and README.md to the created directory:
 ```bash
-[appltprm@eetprm01 ~]$ mkdir -p /u01/scripts/serverStateControl
-[appltprm@eetprm01 serverStateControl]$ chmod u+x *
+[weblogic@host01 ~]$ mkdir -p /u01/scripts/serverStateControl
+[weblogic@host01 serverStateControl]$ chmod u+x *
 ```
 
 Create connection files for WLST (see Tilte #1). Change serverStateControl.py connect() function and blacklist array:
@@ -103,7 +103,7 @@ blacklist = ['AdminServer','p6tmserver_1','p6tmserver_2']
 
 Check if serverStatusControl.py runs as expected:
 ```bash
-[appltprm@eetprm01 serverStateControl]$ $WL_HOME/oracle_common/common/bin/wlst.sh serverStateControl.py
+[weblogic@host01 serverStateControl]$ $WL_HOME/oracle_common/common/bin/wlst.sh serverStateControl.py
 
 Initializing WebLogic Scripting Tool (WLST) ...
 
@@ -146,7 +146,7 @@ p6server_1      :RUNNING        Start Time      :Wed Apr  8 11:39:55 2020
 
 Check if serverStatusControl.py runs as expected:
 ```bash
-[appltprm@eetprm01 serverStateControl]$ ./serverStateControl.sh -w /u01/products/middleware/ -d /u01/config/domains/primaveraDomain/
+[weblogic@host01 serverStateControl]$ ./serverStateControl.sh -w /u01/products/middleware/ -d /u01/config/domains/primaveraDomain/
 
 --------------------------------------------------------------------
                      Start Time: 16.04.2020 - 15:21:01
@@ -209,7 +209,11 @@ p6server_1      :RUNNING        Start Time      :Wed Apr  8 11:39:55 2020
 
 Add the script to the cron as follows:
 ```bash
-[appltprm@eetprm01 serverStateControl]$ crontab -e
-no crontab for appltprm - using an empty one
+[weblogic@host01 serverStateControl]$ crontab -e
+no crontab for weblogic - using an empty one
 0 */4 * * * /u01/scripts/serverStateControl/serverStateControl.sh -w /u01/products/middleware/ -d /u01/config/domains/primaveraDomain/ >> serverStateControl.out
+
+[weblogic@host02 serverStateControl]$ crontab -e
+no crontab for weblogic - using an empty one
+0 */4 * * * /u01/scripts/serverStateControl/nmControl.sh -d /u01/config/domains/primaveraDomain/
 ```
